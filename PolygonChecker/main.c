@@ -28,20 +28,33 @@ int main() {
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
 			break;
-		case 2:
+		case 2: // case for rectangle
 			printf_s("Rectangle selected.\n");
-			RECTANGLE_POINT  rectangle_points[4] ;
-			RECTANGLE_POINT *rectangle_pointsPtr = getRectanglePoints(rectangle_points);
+			POINT  rectangle_points[4] ;
+			POINT *rectangle_pointsPtr = getRectanglePoints(rectangle_points);
 			for (int i = 0; i < 4; i++) {
 				printf("Point %d: x = %d, y = %d\n", i + 1,rectangle_pointsPtr[i].x, rectangle_pointsPtr[i].y);
 			}
-		//printf_s("! %d\n", triangleSidesPtr[0]);
-			/*char* result = analyzeRectangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);*/
-			//printf_s("%s\n", result);
+			LINES line[RECTSIDES];
+
+			line[0].s = rectangle_pointsPtr[0];
+			line[0].e = rectangle_pointsPtr[1];
+
+			line[1].s = rectangle_pointsPtr[1];
+			line[1].e = rectangle_pointsPtr[2];
+
+			line[2].s = rectangle_pointsPtr[2];
+			line[2].e = rectangle_pointsPtr[3];
+
+			line[3].s = rectangle_pointsPtr[3];
+			line[3].e = rectangle_pointsPtr[1];
+
+			int result_ = isRectangle(line);
+			if (result_)
+				printf_s("%s\n", "The rectangle is made");
+			else
+				printf_s("%s\n", "can't make a rectangle");
 			break;
-		 //case for rectangle 
-			
-			
 		case 0:
 			continueProgram = false;
 			break;
