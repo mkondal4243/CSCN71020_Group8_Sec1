@@ -12,3 +12,5 @@ typedef struct Lines {
 POINT* getRectanglePoints(POINT* points);
 int isRectangle(LINES lines[4]);
 double distance(POINT p1, POINT p2);
+double AreaOfRectangle(LINES lines[]);
+double PerimeterOfRectangle(LINES lines[]);

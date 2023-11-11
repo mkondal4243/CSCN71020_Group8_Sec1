@@ -49,12 +49,17 @@ int main() {
 			line[3].s = rectangle_pointsPtr[3];
 			line[3].e = rectangle_pointsPtr[1];
 
-			int result_ = isRectangle(line);
-			if (result_)
+			int res= isRectangle(line);
+			if (res) {
 				printf_s("%s\n", "The rectangle is made");
+				double PERIMETER = AreaOfRectangle(line);
+				double AREA = AreaOfRectangle(line);
+				printf_s(" The rectangle is made has a Area : %2f , perimeter : %2f" ,AREA,PERIMETER);
+			}
 			else
 				printf_s("%s\n", "can't make a rectangle");
-			break;
+			
+			
 		case 0:
 			continueProgram = false;
 			break;

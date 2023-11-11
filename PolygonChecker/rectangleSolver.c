@@ -40,4 +40,22 @@ double distance(POINT p1, POINT p2) {
 	return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
 }
 
+//function to find the area of the rectangle
+double AreaOfRectangle(LINES lines[]) {
+	// Assuming lines[0] and lines[1] represent the length and width
+	double length = distance(lines[0].s, lines[0].e);
+	double width = distance(lines[1].s, lines[1].e);
+	return length * width;
 
+}
+
+//
+double PerimeterOfRectangle(LINES lines[]) {
+	double perimeter = 0.0;
+
+	for (int i = 0; i < RECTSIDES; i++) {
+		perimeter += distance(lines[i].s, lines[i].e);
+	}
+
+	return perimeter;
+}
