@@ -5,6 +5,7 @@
 #include "main.h"
 #include "triangleSolver.h"
 
+
 int side = 0;
 
 int main() {
@@ -27,11 +28,16 @@ int main() {
 				printf_s("Angle 1: %.2lf degrees\n", angles[0]);
 				printf_s("Angle 2: %.2lf degrees\n", angles[1]);
 				printf_s("Angle 3: %.2lf degrees\n", angles[2]);
+				// Determine and print the type of triangle
+				printf_s("Type of triangle: %s\n", classifyTriangle(triangleSidesPtr));
 			}
 			else {
 				printf_s("The given side lengths do not form a triangle.\n");
 			}
 			break;
+		 //case for rectangle 
+			
+			
 		case 0:
 			continueProgram = false;
 			break;
@@ -53,6 +59,7 @@ void printWelcome() {
 
 int printShapeMenu() {
 	printf_s("1. Triangle\n");
+	printf_s("2. Rectangle\n");         //rectangle option
 	printf_s("0. Exit\n");
 
 	int shapeChoice;

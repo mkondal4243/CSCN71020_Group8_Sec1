@@ -22,3 +22,15 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 
 	return result;
 }
+// Function to classify the type of triangle
+char* classifyTriangle(const int* sides) {
+	if (sides[0] == sides[1] && sides[1] == sides[2]) {
+		return "Equilateral";
+	}
+	else if (sides[0] == sides[1] || sides[1] == sides[2] || sides[0] == sides[2]) {
+		return "Isosceles";
+	}
+	else {
+		return "Scalene";
+	}
+}
