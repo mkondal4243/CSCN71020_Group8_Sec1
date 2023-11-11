@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+#include <math.h>
 #include "main.h"
 #include "triangleSolver.h"
 
@@ -19,9 +20,17 @@ int main() {
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			//printf_s("! %d\n", triangleSidesPtr[0]);
-			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf_s("%s\n", result);
+			if (isTriangle(triangleSidesPtr)) {
+				double angles[3];
+				calculateTriangleAngles(triangleSidesPtr, angles);
+				printf_s("The three inside angles of the triangle are:\n");
+				printf_s("Angle 1: %.2lf degrees\n", angles[0]);
+				printf_s("Angle 2: %.2lf degrees\n", angles[1]);
+				printf_s("Angle 3: %.2lf degrees\n", angles[2]);
+			}
+			else {
+				printf_s("The given side lengths do not form a triangle.\n");
+			}
 			break;
 		case 0:
 			continueProgram = false;
@@ -61,4 +70,21 @@ int* getTriangleSides(int* triangleSides) {
 		scanf_s("%d", &triangleSides[i]);
 	}
 	return triangleSides;
+}
+bool isTriangle(const int* sides) {
+	// Check the triangle inequality theorem
+	return (sides[0] + sides[1] > sides[2]) &&
+		(sides[0] + sides[2] > sides[1]) &&
+		(sides[1] + sides[2] > sides[0]);
+}
+
+void calculateTriangleAngles(const int* sides, double* angles) {
+	// Use the law of cosines to calculate angles
+	for (int i = 0; i < 3; i++) {
+		angles[i] = acos((sides[(i + 1) % 3] * sides[(i + 1) % 3] +
+			sides[(i + 2) % 3] * sides[(i + 2) % 3] -
+			sides[i] * sides[i]) /
+			(2.0 * sides[(i + 1) % 3] * sides[(i + 2) % 3]));
+		angles[i] = angles[i] * (180.0 / 3.14); // Convert to degrees
+	}
 }
