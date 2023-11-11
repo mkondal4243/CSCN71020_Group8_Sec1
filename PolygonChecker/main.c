@@ -5,11 +5,13 @@
 #include "main.h"
 #include "triangleSolver.h"
 #include "rectangleSolver.h"
+#define RECTSIDES 4
 
 
 int side = 0;
 
 int main() {
+
 	bool continueProgram = true;
 	while (continueProgram) {
 		printWelcome();
@@ -22,19 +24,20 @@ int main() {
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			if (isTriangle(triangleSidesPtr)) {
-				double angles[3];
-				calculateTriangleAngles(triangleSidesPtr, angles);
-				printf_s("The three inside angles of the triangle are:\n");
-				printf_s("Angle 1: %.2lf degrees\n", angles[0]);
-				printf_s("Angle 2: %.2lf degrees\n", angles[1]);
-				printf_s("Angle 3: %.2lf degrees\n", angles[2]);
-				// Determine and print the type of triangle
-				printf_s("Type of triangle: %s\n", classifyTriangle(triangleSidesPtr));
+			//printf_s("! %d\n", triangleSidesPtr[0]);
+			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			printf_s("%s\n", result);
+			break;
+		case 2:
+			printf_s("Rectangle selected.\n");
+			RECTANGLE_POINT  rectangle_points[4] ;
+			RECTANGLE_POINT *rectangle_pointsPtr = getRectanglePoints(rectangle_points);
+			for (int i = 0; i < 4; i++) {
+				printf("Point %d: x = %d, y = %d\n", i + 1,rectangle_pointsPtr[i].x, rectangle_pointsPtr[i].y);
 			}
-			else {
-				printf_s("The given side lengths do not form a triangle.\n");
-			}
+		//printf_s("! %d\n", triangleSidesPtr[0]);
+			/*char* result = analyzeRectangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);*/
+			//printf_s("%s\n", result);
 			break;
 		 //case for rectangle 
 			

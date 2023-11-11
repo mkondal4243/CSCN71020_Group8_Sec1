@@ -1,9 +1,14 @@
 #pragma once
-
-typedef struct Rectangle_Point {
+#include <stdbool.h>
+typedef struct Point {
 	int x;
 	int y;
-}RECTANGLE_POINT;
+}POINT;
+typedef struct Lines {
+	POINT s; // s is for starting point
+    POINT e; // e is for ending point
+}LINES;
 
-RECTANGLE_POINT* getRectanglePoints(RECTANGLE_POINT* points);
-
+POINT* getRectanglePoints(POINT* points);
+int isRectangle(LINES lines[4]);
+double distance(POINT p1, POINT p2);
