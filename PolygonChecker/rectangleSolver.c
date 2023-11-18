@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <math.h>
 
@@ -13,30 +14,33 @@ printf("Enter the coordinates of four points:\n");
 	for (int i = 0; i < RECTSIDES; i++) {
 		printf("Point %d:\n", i + 1);
 		printf("x-coordinate: ");
-		scanf_s("%d", &points[i].x);
+		int numparse =scanf_s("%d", &points[i].x);
+		if(numparse==0)
+			exit(EXIT_FAILURE);
 		printf("y-coordinate: ");
-		scanf_s("%d", &points[i].y);
+		int numparse1=scanf_s("%d", &points[i].y);
 	}
   return points;
 
 }
 
-
-// Function to check if the given lines form a rectangle
-int isRectangle(LINES lines[RECTSIDES]) {
+int isRectangle(LINES lines[]) {
 	// Check if the opposite sides have equal lengths
 	for (int i = 0; i < RECTSIDES; i++) {
-		int j = (i + 2) % RECTSIDES; // Index of the opposite side
-		if (distance(lines[i].s, lines[i].e) != distance(lines[j].s, lines[j].e)) {
+		int j = (i + 1) % RECTSIDES; // Index of the next side (cyclically)
+		int k = (i + 2) % RECTSIDES; // Index of the opposite side
+		if (distance(lines[i].s, lines[i].e) + distance(lines[j].s, lines[j].e) !=
+			distance(lines[k].s, lines[k].e)) {
 			return 0; // Not a rectangle
 		}
 	}
+
 	return 1; // It's a rectangle
 }
 
-
 // Function to calculate the distance between two points
 double distance(POINT p1, POINT p2) {
+	printf("%f \n", sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2)));
 	return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
 }
 
