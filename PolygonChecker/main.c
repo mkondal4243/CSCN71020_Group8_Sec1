@@ -1,5 +1,8 @@
+//main.c
+
 #include <stdio.h>
 #include <stdbool.h>
+
 
 #include <math.h>
 #include "main.h"
@@ -107,13 +110,4 @@ bool isTriangle(const int* sides) {
 		(sides[1] + sides[2] > sides[0]);
 }
 
-void calculateTriangleAngles(const int* sides, double* angles) {
-	// Use the law of cosines to calculate angles
-	for (int i = 0; i < 3; i++) {
-		angles[i] = acos((sides[(i + 1) % 3] * sides[(i + 1) % 3] +
-			sides[(i + 2) % 3] * sides[(i + 2) % 3] -
-			sides[i] * sides[i]) /
-			(2.0 * sides[(i + 1) % 3] * sides[(i + 2) % 3]));
-		angles[i] = angles[i] * (180.0 / 3.14); // Convert to degrees
-	}
-}
+

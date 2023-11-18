@@ -14,3 +14,4 @@ int isRectangle(LINES lines[]);
 double distance(POINT p1, POINT p2);
 double AreaOfRectangle(LINES lines[]);
 double PerimeterOfRectangle(LINES lines[]);
+#define M_PI 3.14159265358979323846

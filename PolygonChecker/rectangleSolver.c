@@ -21,7 +21,6 @@ printf("Enter the coordinates of four points:\n");
 		int numparse1=scanf_s("%d", &points[i].y);
 	}
   return points;
-
 }
 
 int isRectangle(LINES lines[]) {
