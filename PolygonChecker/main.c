@@ -23,7 +23,7 @@ int main() {
 
 		switch (shapeChoice)
 		{
-		case 1://case for triangle 
+		case 1:
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
@@ -94,7 +94,7 @@ int printShapeMenu() {
 
 	return shapeChoice;
 }
-//ask user to enter 3 sides of triangle 
+
 int* getTriangleSides(int* triangleSides) {
 	printf_s("Enter the three sides of the triangle: ");
 	for (int i = 0; i < 3; i++)
