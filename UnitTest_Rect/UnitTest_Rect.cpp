@@ -29,10 +29,10 @@ namespace UnitTestRect
 		{
 			int expected = 1;
 			LINES rectangle[] = {
-				{-4, -5}, {-1, -5},
-				{-1, -5}, {-1, -2},
-				{-1, -2}, {-4, -2},
-				{-4, -2}, {-4, -5}
+				{-4, -5}, {-4, -2},
+				{-4, -2}, {-1, -2},
+				{-1, -2}, {-1, -5},
+				{-1, -5}, {-4, -5}
 			};
 
 			int res = isRectangle(rectangle);
@@ -81,7 +81,7 @@ namespace UnitTestRect
 
 		TEST_METHOD(ExpectionalTest3)
 		{
-			int expected = 1;
+			int expected = 0;
 			LINES rectangle[] = {
 				{{0, 0}, {0, 2}},
 				{{0, 2}, {3, 9}},
