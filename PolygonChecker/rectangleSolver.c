@@ -32,23 +32,30 @@ POINT* getRectanglePoints(POINT* points) {
     }
     return points;
 }
+void createRectangleLines(POINT* points, LINES* rectangle) {
+    for (int i = 0; i < RECTSIDES; i++) {
+        rectangle[i].s = points[i];
+        rectangle[i].e = points[(i + 1) % RECTSIDES];
+    }
+}
 
 // Function to check if the given lines form a rectangle
 int isRectangle(LINES lines[]) {
     // Check if the opposite sides have equal lengths
     
         int  d1 = distance(lines[0].s, lines[0].e); // assuming the first the co-ordinates is length
-        int  d2 = distance(lines[2].s, lines[2].e); // oppsite side
-        int  d3= distance(lines[1].s, lines[1].e); // assumig the second co-orrdinates is width
+        int  d2 = distance(lines[1].s, lines[1].e); // oppsite side
+        int  d3= distance(lines[2].s, lines[2].e); // assumig the second co-orrdinates is width
         int  d4= distance(lines[3].s, lines[3].e); // oppsite side
-        if(((d1==d2)&&(d3==d4))||((d2==d3)&&(d1==d4)))
+        if(((d1==d2)&&(d3==d4))||((d2==d3)&&(d1==d4))||((d1==d3)&&(d2==d4)))
         return 1; // It's a rectangle
         return 0;//not a rectangle
 }
 
 // Function to calculate the distance between two points
 double distance(POINT p1, POINT p2) {
-    return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
+    double value= sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
+    return value;
 }
 
 // Function to find the area of the rectangle

@@ -33,14 +33,9 @@ int main() {
 			break;
 		case 2: // case for rectangle
 			POINT rectangle_points[RECTSIDES];
-			getRectanglePoints(rectangle_points);
-
 			LINES rectangle[RECTSIDES];
-			for (int i = 0; i < RECTSIDES; i++) {
-				rectangle[i].s = rectangle_points[i];
-				rectangle[i].e = rectangle_points[(i + 1) % RECTSIDES];
-			}
-
+			getRectanglePoints(rectangle_points);
+			createRectangleLines(rectangle_points, rectangle);
 			int res = isRectangle(rectangle);
 			if (res) {
 				printf("The shape is a rectangle.\n");

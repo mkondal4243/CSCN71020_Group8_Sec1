@@ -11,6 +11,7 @@ typedef struct {
 } LINES;
 
 POINT* getRectanglePoints(POINT* points);
+void createRectangleLines(POINT* points, LINES* rectangle);
 int isRectangle(LINES lines[]);
 double distance(POINT p1, POINT p2);
 double AreaOfRectangle(LINES lines[]);
