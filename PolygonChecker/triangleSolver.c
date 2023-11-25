@@ -59,4 +59,7 @@ void calculateTriangleAngles(const int* sides, double* angles) {
     angles[0] = round(angles[0]);
     angles[1] = round(angles[1]);
     angles[2] = round(angles[2]);
+    for (int i = 0; i < 3; i++) {
+        printf("%.2f \n", angles[i]);
+    }
 }

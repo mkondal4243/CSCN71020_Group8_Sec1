@@ -29,7 +29,10 @@ int main() {
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			double angles[] = { 0,0,0 };
+			calculateTriangleAngles(triangleSidesPtr, &angles);
 			printf_s("%s\n", result);
+			
 			break;
 		case 2: // case for rectangle
 			printf_s("Rectangle selected.\n");
