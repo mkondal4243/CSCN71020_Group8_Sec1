@@ -35,37 +35,19 @@ int main() {
 			
 			break;
 		case 2: // case for rectangle
-			printf_s("Rectangle selected.\n");
-			POINT  rectangle_points[4] ;
-			POINT *rectangle_pointsPtr = getRectanglePoints(rectangle_points);
-			for (int i = 0; i < 4; i++) {
-				printf("Point %d: x = %d, y = %d\n", i + 1,rectangle_pointsPtr[i].x, rectangle_pointsPtr[i].y);
-			}
-			LINES line[RECTSIDES];
-
-			line[0].s = rectangle_pointsPtr[0];
-			line[0].e = rectangle_pointsPtr[1];
-
-			line[1].s = rectangle_pointsPtr[1];
-			line[1].e = rectangle_pointsPtr[2];
-
-			line[2].s = rectangle_pointsPtr[2];
-			line[2].e = rectangle_pointsPtr[3];
-
-			line[3].s = rectangle_pointsPtr[3];
-			line[3].e = rectangle_pointsPtr[1];
-
-			int res= isRectangle(line);
+			POINT rectangle_points[RECTSIDES];
+			LINES rectangle[RECTSIDES];
+			getRectanglePoints(rectangle_points);
+			createRectangleLines(rectangle_points, rectangle);
+			int res = isRectangle(rectangle);
 			if (res) {
-				printf_s("%s\n", "The rectangle is made");
-				double PERIMETER = AreaOfRectangle(line);
-				double AREA = AreaOfRectangle(line);
-				printf_s(" The rectangle is made has a Area : %2f , perimeter : %2f" ,AREA,PERIMETER);
+				printf("The shape is a rectangle.\n");
+				printf("The rectangle has an Area: %.6f, Perimeter: %.6f\n", AreaOfRectangle(rectangle), PerimeterOfRectangle(rectangle));
 			}
-			else
-				printf_s("%s\n", "can't make a rectangle");
-			
-			
+			else {
+				printf("The given points do not form a rectangle.\n");
+			}
+			break;
 		case 0:
 			continueProgram = false;
 			break;
