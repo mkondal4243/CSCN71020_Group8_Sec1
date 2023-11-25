@@ -17,9 +17,9 @@ namespace UnitTestRect
 	{
 	public:
 		
-		TEST_METHOD(FunctionalityTest1)
+		TEST_METHOD(FunctionalityTest1)// test case to check distance() works properly
 		{
-			int expected = 1;
+			int expected = 1; // the function is supposed t0 return 1 if its suceusfully 
 			POINT point[RECTSIDES] = {{0, 0},{0, 2}, {3, 2}, {3, 0}};
 			LINES rectangle[RECTSIDES];
 		     createRectangleLines(point ,rectangle);
@@ -64,7 +64,7 @@ namespace UnitTestRect
 			LINES rectangle[RECTSIDES];
 			createRectangleLines(point, rectangle);
 			int res = isRectangle(rectangle);
-			Assert::AreNotEqual(res, expected);
+			Assert::AreNotEqual(res, expected);//the function is supposed to fail and return 0
 		}
 
 		TEST_METHOD(ExpectionalTest2)
@@ -77,7 +77,7 @@ namespace UnitTestRect
 			Assert::AreNotEqual(res, expected);
 		}
 
-		TEST_METHOD(DistanceTest1)
+		TEST_METHOD(DistanceTest1) // test case to check distance() works properly
 		{
 			double expected = 10.295630140987;
 			POINT p1 = { 13,10 }, p2 = { 4,5 };
@@ -107,7 +107,7 @@ namespace UnitTestRect
 			double dis = distance(p1, p2);
 			Assert::AreNotEqual(expected, dis);
 		}
-		TEST_METHOD(AreaFunctionalTest1)
+		TEST_METHOD(AreaFunctionalityTest1) //test case to check AreaOfRectangle() works properly
 		{
 			double expected = 55.47071299343465;
 			POINT point[RECTSIDES] = { {50, 76}, {99, 50}, {98, 50}, {55, 60} };
@@ -117,7 +117,7 @@ namespace UnitTestRect
 			double area= AreaOfRectangle(rectangle);
 			Assert::AreEqual(area, expected);
 		}
-		TEST_METHOD(AreaFunctionalTest2)
+		TEST_METHOD(AreaFunctionalityTest2)
 		{
 			double expected = 60;
 			POINT point[RECTSIDES] = {{-5, 10}, {7, 10}, {7, 5}, {-5, 5}};
@@ -147,7 +147,7 @@ namespace UnitTestRect
 				double area = AreaOfRectangle(rectangle);
 				Assert::AreNotEqual(area, expected);
 		    }
-			TEST_METHOD(PerimeterFunctionalityTest1)
+			TEST_METHOD(PerimeterFunctionalityTest1)// test case to check PerimeterOfRectangle() works properly
 			{
 				double expected = 40;
 				POINT point[RECTSIDES] = { {15, 20}, {25, 20}, {25, 30}, {15, 30} };
